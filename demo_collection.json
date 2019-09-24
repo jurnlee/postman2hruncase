@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "5108c9da-dccd-1234-b331-6e74a6bd7f16",
+		"name": "demo_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "授权认证",
+			"item": [
+				{
+					"name": "auth-login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"account\": \"jurnlee\",\n\"password\": \"e10adc3949ba59abbe56e057f20f883e\",\n\"platform\": \"web\",\n\"rememberMe\":true\n}"
+						},
+						"url": {
+							"raw": "{{base_host}}api/auth/v1/login",
+							"host": [
+								"{{base_host}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "学生",
+			"item": [
+				{
+					"name": "条件查询学生列表",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"unitId\":\"{{unitId}}\",\n\t\"keyword\":\"\"\n}"
+						},
+						"url": {
+							"raw": "{{base_host}}/api/user/v1/students?page=1",
+							"host": [
+								"{{base_host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"students"
+							],
+							"query": [
+								{
+									"key": "unitId",
+									"value": "123456",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改学生",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "10394ec0246d4936b6f6430910e10113"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":\"{{studentId}}\",\n\t\"studentCode\": \"0000067891\",\n\t\"userName\": \"{{namePrefix}}{{radom}}\",\n\t\n\t\"unitId\": \"{{unitId}}\",\n\t\"clazz\": 1,\n\t\"gradeYear\": 2019,\n\t\"gender\": 1,\n\t\"birthDay\": \"2011-01-30\"}"
+						},
+						"url": {
+							"raw": "{{base_host}}/api/user/v1/student",
+							"host": [
+								"{{base_host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "查询系统用户列表",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_host}}/api/user/v1/all?page=1",
+					"host": [
+						"{{base_host}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"v1",
+						"all"
+					],
+					"query": [
+						{
+							"key": "unitId",
+							"value": "123456",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
