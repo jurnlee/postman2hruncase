@@ -48,7 +48,7 @@ class PostmanParser(object):
             return str(value)
 
     def parsePostmanVar(self, value, apiVariables):
-        params = re.findall('\{\{(\w*)}}', value)
+        params = re.findall('\{\{([\w\W]+)}}', value)
         if params == []:
             return value
         for i in params:
